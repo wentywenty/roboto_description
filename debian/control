@@ -1,0 +1,9 @@
+Package: roboto-urdf
+Version: VERSION_PLACEHOLDER
+Section: misc
+Priority: optional
+Architecture: all
+Depends: roboto-base (>= 1.0.0)
+Maintainer: RoboParty <2321901849@qq.com>
+Description: RoboParty URDF models
+ URDF models for the RoboParty robot system.
