@@ -1,0 +1,8 @@
+[submodule "atom01_description"]
+	path = atom01_description
+	url = https://github.com/Roboparty/atom01_description
+	branch = main
+# [submodule "rp1_description"]
+# 	path = rp1_description
+# 	url = https://github.com/Roboparty/rp1_description
+# 	branch = main
