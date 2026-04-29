@@ -1,0 +1,45 @@
+name: Build URDF Package
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "build_deb.sh"
+      - "urdf/**"
+      - "*_description/**"
+      - "debian/**"
+      - ".github/workflows/build-deb.yml"
+    tags:
+      - "v*"
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Build Deb Packages
+        run: |
+          chmod +x build_deb.sh
+          echo ">>> Building for robopi1..."
+          ./build_deb.sh robopi1
+          echo ">>> Building for robopi2..."
+          ./build_deb.sh robopi2
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: roboto-urdf-debs
+          path: roboto-urdf_*.deb
+
+      - name: Release to GitHub
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: roboto-urdf_*.deb
