@@ -11,12 +11,14 @@ PACKAGE="roboto-urdf"
 VERSION="1.1.0"
 PREFIX="/opt/roboparty"
 INSTALL_DIR="${PREFIX}/share"
-DEB_DIR="${PACKAGE}_${VERSION}_${BOARD}"
+# Board suffix in version to avoid pool conflict (e.g. 1.1.0-robopi1)
+DEB_VERSION="${VERSION}-${BOARD}"
+DEB_DIR="${PACKAGE}_${DEB_VERSION}"
 
-echo ">>> Building ${PACKAGE} ${VERSION} for ${BOARD}"
+echo ">>> Building ${PACKAGE} ${DEB_VERSION} for ${BOARD}"
 
 # Clean previous staging directory and deb file
-rm -rf "${DEB_DIR}" "${PACKAGE}_${VERSION}_${BOARD}.deb"
+rm -rf "${DEB_DIR}" "${PACKAGE}_${VERSION}_${BOARD}.deb" "${PACKAGE}_${DEB_VERSION}.deb"
 mkdir -p "${DEB_DIR}/DEBIAN"
 mkdir -p "${DEB_DIR}${INSTALL_DIR}"
 
@@ -69,7 +71,7 @@ chmod 755 "${DEB_DIR}/DEBIAN/postrm" 2>/dev/null || true
 
 # Generate Control file
 # We keep Package: roboto-urdf so it's consistent, but allow board-specific metadata in description
-sed -e "s/VERSION_PLACEHOLDER/${VERSION}/g" \
+sed -e "s/VERSION_PLACEHOLDER/${DEB_VERSION}/g" \
     debian/control > "${DEB_DIR}/DEBIAN/control"
 
 # Append board info to description
@@ -79,4 +81,4 @@ echo " Board-Target: ${BOARD}" >> "${DEB_DIR}/DEBIAN/control"
 echo ">>> Executing dpkg-deb build..."
 dpkg-deb --root-owner-group --build "${DEB_DIR}"
 
-echo ">>> Success! Generated ${PACKAGE}_${VERSION}_${BOARD}.deb"
+echo ">>> Success! Generated ${PACKAGE}_${DEB_VERSION}.deb"
