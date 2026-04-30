@@ -26,7 +26,7 @@ mkdir -p "${DEB_DIR}${INSTALL_DIR}"
 if [ "$BOARD" == "robopi1" ]; then
     for dir in atom01_description/; do
         if [ -d "$dir" ]; then
-            robot_name=$(basename "$dir")
+            robot_name="rpo"
             echo ">>> Including robot description: ${robot_name}..."
             mkdir -p "${DEB_DIR}${INSTALL_DIR}/${robot_name}"
             
