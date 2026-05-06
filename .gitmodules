@@ -1,5 +1,5 @@
-[submodule "atom01_description"]
-	path = atom01_description
+[submodule "rpo_description"]
+	path = rpo_description
 	url = https://github.com/Roboparty/atom01_description
 	branch = main
 # [submodule "rp1_description"]

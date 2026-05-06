@@ -1,4 +1,4 @@
-Package: roboto-urdf
+Package: roboto-description
 Version: VERSION_PLACEHOLDER
 Section: misc
 Priority: optional

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Build roboto-urdf Debian package (Architecture: all)
+# Build roboto-description Debian package (Architecture: all)
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -7,8 +7,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Determine Board Type (Optional, for filename distinction)
 BOARD=${1:-"robopi1"}
 
-PACKAGE="roboto-urdf"
-VERSION="1.1.0"
+PACKAGE="roboto-description"
+VERSION="1.1.1"
 PREFIX="/opt/roboparty"
 INSTALL_DIR="${PREFIX}/share"
 # Board suffix in version to avoid pool conflict (e.g. 1.1.0-robopi1)
@@ -22,11 +22,11 @@ rm -rf "${DEB_DIR}" "${PACKAGE}_${VERSION}_${BOARD}.deb" "${PACKAGE}_${DEB_VERSI
 mkdir -p "${DEB_DIR}/DEBIAN"
 mkdir -p "${DEB_DIR}${INSTALL_DIR}"
 
-# Find all directories that contain robot descriptions (e.g., atom01_description)
+# Find all directories that contain robot descriptions (e.g., rpo_description)
 if [ "$BOARD" == "robopi1" ]; then
-    for dir in atom01_description/; do
+    for dir in rpo_description/; do
         if [ -d "$dir" ]; then
-            robot_name="rpo"
+            robot_name="rpo_description"
             echo ">>> Including robot description: ${robot_name}..."
             mkdir -p "${DEB_DIR}${INSTALL_DIR}/${robot_name}"
             
@@ -46,7 +46,7 @@ fi
 if [ "$BOARD" == "robopi2" ]; then
     for dir in rp1_description/; do
         if [ -d "$dir" ]; then
-            robot_name=$(basename "$dir")
+            robot_name="rp1_description"
             echo ">>> Including robot description: ${robot_name}..."
             mkdir -p "${DEB_DIR}${INSTALL_DIR}/${robot_name}"
             
@@ -70,7 +70,7 @@ chmod 755 "${DEB_DIR}/DEBIAN/postinst" 2>/dev/null || true
 chmod 755 "${DEB_DIR}/DEBIAN/postrm" 2>/dev/null || true
 
 # Generate Control file
-# We keep Package: roboto-urdf so it's consistent, but allow board-specific metadata in description
+# We keep Package: roboto-description so it's consistent, but allow board-specific metadata in description
 sed -e "s/VERSION_PLACEHOLDER/${DEB_VERSION}/g" \
     debian/control > "${DEB_DIR}/DEBIAN/control"
 
