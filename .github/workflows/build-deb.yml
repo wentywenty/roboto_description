@@ -5,7 +5,7 @@ on:
     branches: [main, master]
     paths:
       - "build_deb.sh"
-      - "urdf/**"
+      - "description/**"
       - "*_description/**"
       - "debian/**"
       - ".github/workflows/build-deb.yml"
@@ -35,11 +35,11 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: roboto-urdf-debs
-          path: roboto-urdf_*.deb
+          name: roboto-description-debs
+          path: roboto-description_*.deb
 
       - name: Release to GitHub
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
-          files: roboto-urdf_*.deb
+          files: roboto-description_*.deb
