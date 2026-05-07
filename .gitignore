@@ -1,3 +1,16 @@
-roboto-description*/
-*.deb
+#environment
+.vscode/
+.idea/
+
+# debhelper build outputs
+obj-*/
+debian/files
+debian/debhelper-build-stamp
+debian/*.debhelper.log
+debian/*.substvars
+debian/roboto-*/
+debian/.debhelper/
+debian/*.install
+
+# source ignore
 rp1_description/

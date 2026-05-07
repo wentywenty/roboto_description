@@ -1,0 +1,9 @@
+roboto-description (1.1.2-1) stable; urgency=medium
+
+  * Update standard deb package
+
+ -- wentywenty <2321901849@qq.com>  Thu, 07 May 2026 16:52:13 +0800
+
+roboto-description (1.1.1-1) unstable; urgency=medium
+  * Multi-binary package setup
+ -- RoboParty <2321901849@qq.com>  Thu, 07 May 2026 12:00:00 +0000
