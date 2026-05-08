@@ -1,0 +1,9 @@
+rpo_description/urdf opt/roboparty/share/rpo_description
+rpo_description/meshes opt/roboparty/share/rpo_description
+rpo_description/mjcf opt/roboparty/share/rpo_description
+rpo_description/README.md opt/roboparty/share/rpo_description
+
+rp1_description/urdf opt/roboparty/share/rp1_description
+rp1_description/meshes opt/roboparty/share/rp1_description
+rp1_description/mjcf opt/roboparty/share/rp1_description
+rp1_description/README.md opt/roboparty/share/rp1_description

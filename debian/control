@@ -5,14 +5,8 @@ Maintainer: RoboParty <2321901849@qq.com>
 Build-Depends: debhelper-compat (= 13)
 Standards-Version: 4.6.0
 
-Package: roboto-description-robopi1
+Package: roboto-description
 Architecture: all
 Depends: roboto-base (>= 1.0.0), ${misc:Depends}
-Description: RoboParty URDF models for robopi1 (RPO)
- URDF models, meshes, and mjcf descriptions for the RoboParty robopi1 robot.
-
-Package: roboto-description-robopi2
-Architecture: all
-Depends: roboto-base (>= 1.0.0), ${misc:Depends}
-Description: RoboParty URDF models for robopi2 (RP1)
- URDF models, meshes, and mjcf descriptions for the RoboParty robopi2 robot.
+Description: RoboParty URDF models for all robots
+ URDF models, meshes, and mjcf descriptions for all RoboParty robots.

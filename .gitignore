@@ -10,7 +10,6 @@ debian/*.debhelper.log
 debian/*.substvars
 debian/roboto-*/
 debian/.debhelper/
-debian/*.install
 
 # source ignore
 rp1_description/
